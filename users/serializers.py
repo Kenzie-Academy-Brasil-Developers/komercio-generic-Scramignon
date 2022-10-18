@@ -26,4 +26,7 @@ class UserSerializer(serializers.ModelSerializer):
             "username": {"validators":[UniqueValidator(queryset=User.objects.all())]},
             "password": {"write_only":True}
         }
+    
+    def create(self, validated_data):
+        return User.objects.create_user(**validated_data)
 
