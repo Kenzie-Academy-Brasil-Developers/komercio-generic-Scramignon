@@ -1,7 +1,7 @@
 from rest_framework import generics
 from rest_framework.authentication import TokenAuthentication
 
-from .permissions import IsSellerOrReadOnly
+from .permissions import IsSellerOrReadOnly, IsSellerOwnerOrReadOnly
 
 from .models import Product
 
@@ -30,5 +30,8 @@ class ProductsView(generics.ListCreateAPIView):
 
 
 class ProductDetailView(generics.RetrieveUpdateAPIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsSellerOwnerOrReadOnly]
+
     queryset = Product.objects.all()
     serializer_class = PostProductSerializer
