@@ -35,5 +35,13 @@ class ProductDetailView(generics.RetrieveUpdateAPIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsSellerOwnerOrReadOnly]
 
+    def get_serializer_class(self, *args, **kwargs):
+        return self.serializer_map.get(self.request.method, self.serializer_class)
+
+    serializer_map = {
+        'GET': ProductSerializer,
+        'Patch': PostProductSerializer,
+    }
+
     queryset = Product.objects
     serializer_class = PostProductSerializer

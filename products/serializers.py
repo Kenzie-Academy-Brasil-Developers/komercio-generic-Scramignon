@@ -14,15 +14,15 @@ class PostProductSerializer(serializers.ModelSerializer):
     class Meta:
 
         model = Product
-        fields = "__all__"
+        # fields = "__all__"
         read_only_fields = ["id"]
-        # exclude = ("user",)
+        exclude = ("user",)
 
         # depth = 1
         # user read only modification REMEMBER
         extra_kwargs = {
             "price":{
-                "validators":[validate_2_decimal_places]
+                # "validators":[validate_2_decimal_places]
             },
             "user": {
                 "allow_null":True,
@@ -37,6 +37,7 @@ class PostProductSerializer(serializers.ModelSerializer):
             return None
 
     def create(self, validated_data):
+        validated_data["price"] = round(float(validated_data["price"]), 2)
         product = Product.objects.create(**validated_data)
         return product
 
@@ -47,8 +48,8 @@ class ProductSerializer(serializers.ModelSerializer):
     class Meta:
 
         model = Product
-        # fields = "__all__"
-        exclude = ("user", )
+        fields = "__all__"
+        # exclude = ("user", )
         read_only_fields = ["id"]
 
         # depth = 1
@@ -69,6 +70,7 @@ class ProductSerializer(serializers.ModelSerializer):
             return None
 
     def create(self, validated_data):
+        validated_data["price"] = round(float(validated_data["price"]), 2)
         product = Product.objects.create(**validated_data)
         return product
 

@@ -18,7 +18,7 @@ class UserSerializer(serializers.ModelSerializer):
 
         read_only_fields = [
             "date_joined",
-            "is_active",
+            "is_active"
             "is_superuser"
         ]
 
@@ -29,4 +29,26 @@ class UserSerializer(serializers.ModelSerializer):
     
     def create(self, validated_data):
         return User.objects.create_user(**validated_data)
+
+class UserActiveToggleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = [
+            "username",
+            "first_name",
+            "last_name",
+            "is_seller",
+            "date_joined",
+            "is_active",
+            "is_superuser"
+        ]
+
+        read_only_fields = [
+            "username",
+            "first_name",
+            "last_name",
+            "is_seller",
+            "date_joined",
+            "is_superuser"
+        ]
 
