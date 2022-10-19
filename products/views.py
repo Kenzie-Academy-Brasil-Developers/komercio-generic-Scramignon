@@ -11,20 +11,22 @@ from .serializers import PostProductSerializer, ProductSerializer
 # Create your views here.
 class ProductsView(generics.ListCreateAPIView):
 
-    def get_serializer_class(self, *args, **kwargs):
-        return self.serializer_map.get(self.request.method, self.serializer_class)
-
-    def post(self, request, *args, **kwargs):
-        request.data["user"] = request.user.id
-        return self.create(request, *args, **kwargs)
-
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsSellerOrReadOnly]
+
+    # allow custom serializers for different methods
+    def get_serializer_class(self, *args, **kwargs):
+        return self.serializer_map.get(self.request.method, self.serializer_class)
 
     serializer_map = {
         'GET': ProductSerializer,
         'POST': PostProductSerializer,
     }
+
+    def perform_create(self, serializer):
+        return serializer.save(user=self.request.user)
+
+
 
     queryset = Product.objects.all()
 
@@ -33,5 +35,5 @@ class ProductDetailView(generics.RetrieveUpdateAPIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsSellerOwnerOrReadOnly]
 
-    queryset = Product.objects.all()
+    queryset = Product.objects
     serializer_class = PostProductSerializer

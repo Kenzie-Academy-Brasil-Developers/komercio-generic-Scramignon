@@ -2,7 +2,15 @@ from django.db import models
 from utils.validators import validate_2_decimal_places
 from users.models import User
 
+import uuid
+
 class Product(models.Model):
+    id = models.UUIDField(
+        default=uuid.uuid4,
+        primary_key=True,
+        editable=False 
+    )
+    
     description = models.TextField()
     price = models.FloatField(
         validators=[validate_2_decimal_places]

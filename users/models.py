@@ -3,11 +3,19 @@ from django.contrib.auth.models import AbstractUser
 
 from django.contrib.auth.validators import UnicodeUsernameValidator
 
+import uuid
+
 # Create your models here.
 class User(AbstractUser):
     """
     Mutated properties
     """
+    id = models.UUIDField(
+        default=uuid.uuid4,
+        primary_key=True,
+        editable=False
+    )
+
     username_validator = UnicodeUsernameValidator()
 
     username = models.TextField(

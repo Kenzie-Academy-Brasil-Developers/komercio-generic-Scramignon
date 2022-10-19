@@ -6,21 +6,27 @@ from users.serializers import UserSerializer
 import ipdb
 
 class PostProductSerializer(serializers.ModelSerializer):
-    seller = serializers.SerializerMethodField()
+    seller = serializers.SerializerMethodField(read_only=True)
+
+    # The purpose of this code is to remember me how it can be done
+    # user = UserSerializer(read_only=True)
+
     class Meta:
 
         model = Product
         fields = "__all__"
         read_only_fields = ["id"]
+        # exclude = ("user",)
 
         # depth = 1
+        # user read only modification REMEMBER
         extra_kwargs = {
             "price":{
                 "validators":[validate_2_decimal_places]
             },
             "user": {
                 "allow_null":True,
-                "write_only":True
+                "read_only":True
             }
         }
 
@@ -41,7 +47,8 @@ class ProductSerializer(serializers.ModelSerializer):
     class Meta:
 
         model = Product
-        fields = "__all__"
+        # fields = "__all__"
+        exclude = ("user", )
         read_only_fields = ["id"]
 
         # depth = 1
