@@ -10,6 +10,7 @@ from .serializers import UserSerializer, UserActiveToggleSerializer
 
 from .permissions import UpdateUserPermission
 
+
 class UserView(generics.ListCreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
