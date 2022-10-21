@@ -18,13 +18,14 @@ class UserSerializer(serializers.ModelSerializer):
 
         read_only_fields = [
             "date_joined",
-            "is_active"
+            "is_active",
             "is_superuser"
         ]
 
         extra_kwargs = {
             "username": {"validators":[UniqueValidator(queryset=User.objects.all())]},
-            "password": {"write_only":True}
+            "password": {"write_only":True},
+            "is_active":{"read_only":True}
         }
     
     def create(self, validated_data):
