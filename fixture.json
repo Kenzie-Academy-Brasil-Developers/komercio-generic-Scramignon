@@ -1,0 +1,68 @@
+[
+    {
+        "model": "products.product",
+        "pk": "023c65f4-7893-4f3a-961a-ece78d32e99a",
+        "fields": {
+            "description": "patched toothbrush",
+            "price": 3.99,
+            "quantity": 1,
+            "is_active": true,
+            "user": "11322d6f-fbf9-4644-b5dc-6eddbd6cd1e1"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": "6c8d291b-28cd-4a5a-806d-2e4216957b84",
+        "fields": {
+            "description": "soap",
+            "price": 2.99,
+            "quantity": 1,
+            "is_active": true,
+            "user": "11322d6f-fbf9-4644-b5dc-6eddbd6cd1e1"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": "adb12b02-b478-4ecd-a65a-ee369de7d0e2",
+        "fields": {
+            "description": "soap",
+            "price": 2.999999999999,
+            "quantity": 1,
+            "is_active": true,
+            "user": "11322d6f-fbf9-4644-b5dc-6eddbd6cd1e1"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": "b195d82d-49c0-4c09-8ee8-99d932b3ba53",
+        "fields": {
+            "description": "soap",
+            "price": 2.999999999999,
+            "quantity": 1,
+            "is_active": true,
+            "user": "11322d6f-fbf9-4644-b5dc-6eddbd6cd1e1"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": "c3a2b2a7-8ec1-4c7b-a758-9f21f4015d66",
+        "fields": {
+            "description": "soap",
+            "price": 2.0,
+            "quantity": 1,
+            "is_active": true,
+            "user": "11322d6f-fbf9-4644-b5dc-6eddbd6cd1e1"
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": "ee862985-e767-4374-bf90-c3a2263bf8f3",
+        "fields": {
+            "description": "soap",
+            "price": 3.0,
+            "quantity": 1,
+            "is_active": true,
+            "user": "11322d6f-fbf9-4644-b5dc-6eddbd6cd1e1"
+        }
+    }
+]
