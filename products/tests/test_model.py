@@ -61,18 +61,3 @@ class ProductModelTest(TestCase):
         # but one user only
         self.assertEqual(self.product.user.id, self.user_2.id)
         self.assertFalse(self.user.products.values())
-
-    # def test_product_user_relation_serializer(self):
-
-    #     # adds user (id) to product data
-    #     self.correct_product["user"] = self.user.id
-    
-    #     serializer = ProductSerializer(data=self.correct_product)
-    #     serializer.is_valid(raise_exception=True)
-    #     serializer.save()
-
-    #     new_product = serializer.data
-
-    #     self.assertEqual(self.product.id, self.user.products.values()[0]["id"])
-    #     self.assertEqual(new_product["id"], str(self.user.products.values()[1]["id"]))
-
