@@ -30,6 +30,17 @@ class UserSerializer(serializers.ModelSerializer):
     
     def create(self, validated_data):
         return User.objects.create_user(**validated_data)
+    
+    def update(self, instance, validated_data):
+        user = super().update(instance, validated_data)
+
+        try:
+            user.set_password(validated_data["password"])
+            user.save()
+        except KeyError:
+            pass
+    
+        return user
 
 class UserActiveToggleSerializer(serializers.ModelSerializer):
     class Meta:
