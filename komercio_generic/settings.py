@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 import os
 import dotenv
+import dj_database_url
 
 from pathlib import Path
 
@@ -31,7 +32,10 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "komercio-generic-scramignon.herokuapp.com",
+    "localhost"
+]
 
 
 # Application definition
@@ -95,6 +99,13 @@ DATABASES = {
     }
 }
 
+DATABASE_URL = os.getenv("DABASE_URL")
+
+if DATABASE_URL:
+    db = dj_database_url.config(default=DATABASE_URL)
+    DATABASES["default"].update(db)
+
+    DEBUG = False
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
