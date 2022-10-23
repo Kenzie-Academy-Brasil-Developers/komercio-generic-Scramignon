@@ -68,5 +68,5 @@ http://localhost:8000/api/docs/swagger-ui/
 
 The first one is a download of a yaml file and the second is the documentation ui.
 <br>
-The port may vary depending where the server is running.The default is 8000.
+The port may vary depending where the server is running. The port default is 8000.
 
