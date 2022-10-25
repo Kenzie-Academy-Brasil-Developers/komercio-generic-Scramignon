@@ -39,7 +39,7 @@ class ProductDetailView(generics.RetrieveUpdateAPIView):
         return self.serializer_map.get(self.request.method, self.serializer_class)
 
     serializer_map = {
-        'GET': ProductSerializer,
+        'GET': PostProductSerializer,
         'Patch': PostProductSerializer,
     }
 
